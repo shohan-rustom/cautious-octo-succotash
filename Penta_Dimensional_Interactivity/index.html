@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Penta-Dimensional Interactivity</title>
+        <script src ="https://unpkg.com/d3@5.7.0/dist/d3.min.js"></script>
+      
+</head>
+
+<body> 
+    <script>
+
+        d3.json("mydata.json", function (data) {
+            var canvas = d3.select("body").append("svg")
+                .attr("width", 500)
+                .attr("height", 500)
+            canvas.selectAll("rect")
+                .data(data)
+                .enter()
+                    .append("rect")
+                    .attr("width", function (d) {return d.age*10;})
+                    .attr("height", 48)
+                    .attr("y", function(d,i){return i*50;})
+                    .attr("fill", "blue")
+        })
+        
+    </script>
+
+</body>
+</html>
